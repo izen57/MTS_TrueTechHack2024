@@ -15,4 +15,4 @@
 - получение, изменение и удаление информации о наиболее удобном внешнем виде сайта МТС Live для пользователей с особыми потребностями.
 
 # Технологии
-[Java Spring](https://spring.io/), [React](https://react.dev/), [Docker](https://www.docker.com/).
+[Java Spring](https://spring.io/), [React](https://react.dev/), [PostgreSQL](https://www.postgresql.org/), [Docker](https://www.docker.com/).
