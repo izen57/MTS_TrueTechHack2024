@@ -8,7 +8,9 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface ICredentialsMapper {
     ICredentialsMapper INSTANCE = Mappers.getMapper(ICredentialsMapper.class);
+
     UserCredentialsDB userDetailsToCredentials(CustomUserDetails details);
+
     CustomUserDetails credentialsToUserDetails(UserCredentialsDB credentials);
 
 }

@@ -8,7 +8,9 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface IUsersMapper {
     IUsersMapper INSTANCE = Mappers.getMapper(IUsersMapper.class);
+
     UsersDB usersToUsersDB(Users user);
+
     Users usersDBToUsers(UsersDB userDB);
 
 }
