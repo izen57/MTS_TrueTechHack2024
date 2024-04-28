@@ -1,10 +1,10 @@
 package org.glabs.accessibility.repositories.implementations;
 
-import org.glabs.accessibility.domain.Users;
-import org.glabs.accessibility.repositories.data.UsersDB;
+import org.glabs.accessibility.domain.User;
+import org.glabs.accessibility.repositories.data.UserDB;
 import org.glabs.accessibility.repositories.interfaces.IUsersJpaRepository;
 import org.glabs.accessibility.repositories.interfaces.IUsersRepository;
-import org.glabs.accessibility.repositories.mappers.IUsersMapper;
+import org.glabs.accessibility.repositories.mappers.IUserMapper;
 
 import java.util.UUID;
 
@@ -15,27 +15,27 @@ public class UsersRepository implements IUsersRepository {
         this.repository = repository;
     }
 
-    public Users findUserBy(UUID id) {
-        UsersDB userDB = repository.findById(id).orElse(null);
-        Users result = null;
+    public User findUserBy(UUID id) {
+        UserDB userDB = repository.findById(id).orElse(null);
+        User result = null;
         if (userDB != null) {
-            result = IUsersMapper.INSTANCE.usersDBToUsers(userDB);
+            result = IUserMapper.INSTANCE.usersDBToUsers(userDB);
         }
         return result;
     }
 
-    public Users findUserBy(String username) {
-        UsersDB userDB = repository.findByUsername(username);
-        Users result = null;
+    public User findUserBy(String username) {
+        UserDB userDB = repository.findByUsername(username);
+        User result = null;
         if (userDB != null) {
-            result = IUsersMapper.INSTANCE.usersDBToUsers(userDB);
+            result = IUserMapper.INSTANCE.usersDBToUsers(userDB);
         }
         return result;
     }
 
-    public Users save(Users user) {
-        IUsersMapper mapper = IUsersMapper.INSTANCE;
-        UsersDB userDB = repository.save(mapper.usersToUsersDB(user));
+    public User save(User user) {
+        IUserMapper mapper = IUserMapper.INSTANCE;
+        UserDB userDB = repository.save(mapper.usersToUsersDB(user));
         return mapper.usersDBToUsers(userDB);
     }
 }

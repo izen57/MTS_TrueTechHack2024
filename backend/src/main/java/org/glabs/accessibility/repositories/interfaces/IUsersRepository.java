@@ -1,14 +1,14 @@
 package org.glabs.accessibility.repositories.interfaces;
 
-import org.glabs.accessibility.domain.Users;
+import org.glabs.accessibility.domain.User;
 
 import java.util.UUID;
 
 
 public interface IUsersRepository {
-    Users findUserBy(UUID id);
+    User findUserBy(UUID id);
 
-    Users findUserBy(String username);
+    User findUserBy(String username);
 
-    Users save(Users user);
+    User save(User user);
 }

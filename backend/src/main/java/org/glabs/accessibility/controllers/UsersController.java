@@ -3,7 +3,7 @@ package org.glabs.accessibility.controllers;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.glabs.accessibility.domain.Users;
+import org.glabs.accessibility.domain.User;
 import org.glabs.accessibility.services.UsersService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -32,7 +32,7 @@ public class UsersController {
                             description = "Server-side problem")
             })
     @PostMapping(value = "/users")
-    public ResponseEntity<Void> createUser(@RequestBody Users user) {
+    public ResponseEntity<Void> createUser(@RequestBody User user) {
         HttpStatus status = HttpStatus.CREATED;
         user = service.createUser(user);
         if (user == null) {
@@ -49,11 +49,11 @@ public class UsersController {
                     @ApiResponse(responseCode = "404", description = "User not found")
             })
     @GetMapping("/users/{id}")
-    public ResponseEntity<Users> getUserById( //
-                                              @PathVariable UUID id) {
+    public ResponseEntity<User> getUserById( //
+                                             @PathVariable UUID id) {
         HttpStatus status = HttpStatus.OK;
         HttpHeaders headers = new HttpHeaders();
-        Users user = service.getUserBy(id);
+        User user = service.getUserBy(id);
         if (user == null) {
             status = HttpStatus.NOT_FOUND;
             headers.setLocation(URI.create("/"));
@@ -69,11 +69,11 @@ public class UsersController {
                     @ApiResponse(responseCode = "404", description = "User not found")
             })
     @GetMapping("/users/{username}")
-    public ResponseEntity<Users> getUserByUsername( //
-                                                    @PathVariable String username) {
+    public ResponseEntity<User> getUserByUsername( //
+                                                   @PathVariable String username) {
         HttpStatus status = HttpStatus.OK;
         HttpHeaders headers = new HttpHeaders();
-        Users user = service.getUserBy(username);
+        User user = service.getUserBy(username);
         if (user == null) {
             status = HttpStatus.NOT_FOUND;
             headers.setLocation(URI.create("/"));

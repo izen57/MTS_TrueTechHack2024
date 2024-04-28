@@ -15,7 +15,7 @@ import java.util.UUID;
 @ToString
 @RequiredArgsConstructor
 @Entity
-public class UsersDB {
+public class UserDB {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
