@@ -25,41 +25,41 @@ public class CustomUserDetails implements UserDetails {
         return password;
     }
 
-    /*
+    /**
      * Returns user name
-     * */
+     */
     @Override
     public String getUsername() {
         return username;
     }
 
-    /*
+    /**
      * Returns account expiration status
-     * */
+     */
     @Override
     public boolean isAccountNonExpired() {
         return accountIsNotExpired;
     }
 
-    /*
+    /**
      * Returns account lock status
-     * */
+     */
     @Override
     public boolean isAccountNonLocked() {
         return accountIsNotLocked;
     }
 
-    /*
+    /**
      * Returns credentials expiration status
-     * */
+     */
     @Override
     public boolean isCredentialsNonExpired() {
         return credentialsAreNotExpired;
     }
 
-    /*
+    /**
      * Returns account enabled status
-     * */
+     */
     @Override
     public boolean isEnabled() {
         return enabled;
