@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public class CustomUserDetails implements UserDetails {
     private UUID id;
-    private String username;
+    private String login;
     private String password;
     private boolean accountIsNotExpired;
     private boolean accountIsNotLocked;
@@ -30,7 +30,7 @@ public class CustomUserDetails implements UserDetails {
      */
     @Override
     public String getUsername() {
-        return username;
+        return login;
     }
 
     /**
