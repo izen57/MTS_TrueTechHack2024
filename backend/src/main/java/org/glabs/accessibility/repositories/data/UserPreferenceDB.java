@@ -1,9 +1,7 @@
 package org.glabs.accessibility.repositories.data;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -19,12 +17,26 @@ import java.util.UUID;
 @ToString
 @RequiredArgsConstructor
 @Entity
-public class PreferenceDB {
+@Table(name = "user_preference")
+public class UserPreferenceDB {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private UserDB user;
+
+    @Column(name = "font_size")
+    @NotNull
     private int fontSize;
+
+    @Column(name = "font_color")
+    @NotNull
     private Color fontColor;
+
+    @Column(name = "selector_color")
+    @NotNull
     private Color selectorColor;
 
     @Override
@@ -36,7 +48,7 @@ public class PreferenceDB {
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? //
                 ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        PreferenceDB that = (PreferenceDB) o;
+        UserPreferenceDB that = (UserPreferenceDB) o;
         return getId() != null && Objects.equals(getId(), that.getId());
     }
 

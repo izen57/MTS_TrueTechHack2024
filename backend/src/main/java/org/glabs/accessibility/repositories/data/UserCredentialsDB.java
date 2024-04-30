@@ -1,6 +1,7 @@
 package org.glabs.accessibility.repositories.data;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -15,17 +16,24 @@ import java.util.UUID;
 @ToString
 @RequiredArgsConstructor
 @Entity
+@Table(name = "user_credentials")
 public class UserCredentialsDB {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(unique = true)
+    @NotNull
     private String login;
 
     // Password is hashed and is large character object
     @Lob
+    @NotNull
     private String password;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private UserDB user;
 
     @Override
     public final boolean equals(Object o) {

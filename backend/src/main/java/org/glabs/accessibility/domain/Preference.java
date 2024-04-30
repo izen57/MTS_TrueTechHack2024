@@ -1,9 +1,11 @@
 package org.glabs.accessibility.domain;
 
+import lombok.Data;
 import org.w3c.dom.css.RGBColor;
 
 import java.util.UUID;
 
+@Data
 public class Preference {
     private UUID id;
     private int fontSize;

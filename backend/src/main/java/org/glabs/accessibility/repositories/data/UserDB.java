@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.proxy.HibernateProxy;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -15,13 +16,25 @@ import java.util.UUID;
 @ToString
 @RequiredArgsConstructor
 @Entity
+@Table(name = "_user")
 public class UserDB {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(unique = true)
+    @Column(name = "name", unique = true)
     private String username;
+
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
+    private List<CommentDB> comments;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_preference_id")
+    private UserPreferenceDB preferenceDB;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_credentials_id")
+    private UserCredentialsDB credentialsDB;
 
     @Override
     public final boolean equals(Object o) {
