@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.util.UUID;
 
-@Tag(name = "Users", description = "Users operations")
+@Tag(name = "Users", description = "Операции над пользователями")
 @RestController
 public class UsersController {
     private final UsersService service;
@@ -22,15 +22,12 @@ public class UsersController {
         this.service = service;
     }
 
-    @Operation(
-            responses = {
-                    @ApiResponse(
-                            responseCode = "201", //
-                            description = "Successfully create user"),
-                    @ApiResponse(
-                            responseCode = "500", //
-                            description = "Server-side problem")
-            })
+    @Operation(responses = {
+        @ApiResponse(
+            responseCode = "201",
+            description = "Пользователь успешно создан."
+        )
+    })
     @PostMapping(value = "/users")
     public ResponseEntity<Void> createUser(@RequestBody User user) {
         HttpStatus status = HttpStatus.CREATED;
@@ -41,16 +38,17 @@ public class UsersController {
         return new ResponseEntity<>(status);
     }
 
-    @Operation(
-            responses = {
-                    @ApiResponse(
-                            responseCode = "200", //
-                            description = "Successfully return user information"),
-                    @ApiResponse(responseCode = "404", description = "User not found")
-            })
+    @Operation(responses = {
+        @ApiResponse(
+            responseCode = "200",
+            description = "Пользователь найден."),
+        @ApiResponse(
+            responseCode = "404",
+            description = "Пользователь не найден."
+        )
+    })
     @GetMapping("/users/{id}")
-    public ResponseEntity<User> getUserById( //
-                                             @PathVariable UUID id) {
+    public ResponseEntity<User> getUserById(@PathVariable UUID id) {
         HttpStatus status = HttpStatus.OK;
         HttpHeaders headers = new HttpHeaders();
         User user = service.getUserBy(id);
@@ -61,16 +59,18 @@ public class UsersController {
         return new ResponseEntity<>(user, status);
     }
 
-    @Operation(
-            responses = {
-                    @ApiResponse(
-                            responseCode = "200", //
-                            description = "Successfully return user information"),
-                    @ApiResponse(responseCode = "404", description = "User not found")
-            })
+    @Operation(responses = {
+        @ApiResponse(
+            responseCode = "200",
+            description = "Пользователь найден."
+        ),
+        @ApiResponse(
+            responseCode = "404",
+            description = "Пользователь не найден."
+        )
+    })
     @GetMapping("/users/{username}")
-    public ResponseEntity<User> getUserByUsername( //
-                                                   @PathVariable String username) {
+    public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
         HttpStatus status = HttpStatus.OK;
         HttpHeaders headers = new HttpHeaders();
         User user = service.getUserBy(username);
