@@ -17,13 +17,10 @@ public class CommentDB {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID ID;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private UserDB user;
 
-    @NotNull
-    private String text;
-
-    @NotNull
-    private ZonedDateTime zonedDateTime;
+    @NotNull private String text;
+    @NotNull private ZonedDateTime zonedDateTime;
 }

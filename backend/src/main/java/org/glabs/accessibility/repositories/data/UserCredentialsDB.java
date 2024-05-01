@@ -31,7 +31,7 @@ public class UserCredentialsDB {
     @NotNull
     private String password;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private UserDB user;
 

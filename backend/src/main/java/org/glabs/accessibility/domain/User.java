@@ -1,12 +1,17 @@
 package org.glabs.accessibility.domain;
 
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.NonNull;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.UUID;
 
 @Data
 public class User {
-    @NotNull private UUID id;
-    @NotNull private String username;
+    @NonNull private UUID id;
+    @NonNull private String username;
+    @NonNull private List<Comment> comments = new LinkedList<>();
+    @NonNull private UserPreference preference;
+    @NonNull private CustomUserDetails credentials;
 }
