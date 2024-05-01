@@ -6,8 +6,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
-public interface IUserMapper {
-    IUserMapper INSTANCE = Mappers.getMapper(IUserMapper.class);
+public interface IUsersMapper {
+    IUsersMapper INSTANCE = Mappers.getMapper(IUsersMapper.class);
 
     UserDB usersToUsersDB(User user);
 

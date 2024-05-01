@@ -4,8 +4,8 @@ import org.glabs.accessibility.domain.Preference;
 import org.glabs.accessibility.repositories.data.UserPreferenceDB;
 import org.mapstruct.factory.Mappers;
 
-public interface IPreferenceMapper {
-    IPreferenceMapper INSTANCE = Mappers.getMapper(IPreferenceMapper.class);
+public interface IPreferencesMapper {
+    IPreferencesMapper INSTANCE = Mappers.getMapper(IPreferencesMapper.class);
 
     UserPreferenceDB preferenceToPreferenceDB(Preference preference);
 

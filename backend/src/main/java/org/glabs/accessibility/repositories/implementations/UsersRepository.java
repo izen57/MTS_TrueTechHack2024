@@ -4,7 +4,7 @@ import org.glabs.accessibility.domain.User;
 import org.glabs.accessibility.repositories.data.UserDB;
 import org.glabs.accessibility.repositories.interfaces.IUsersJpaRepository;
 import org.glabs.accessibility.repositories.interfaces.IUsersRepository;
-import org.glabs.accessibility.repositories.mappers.IUserMapper;
+import org.glabs.accessibility.repositories.mappers.IUsersMapper;
 
 import java.util.UUID;
 
@@ -19,7 +19,7 @@ public class UsersRepository implements IUsersRepository {
         UserDB userDB = repository.findById(id).orElse(null);
         User result = null;
         if (userDB != null) {
-            result = IUserMapper.INSTANCE.usersDBToUsers(userDB);
+            result = IUsersMapper.INSTANCE.usersDBToUsers(userDB);
         }
         return result;
     }
@@ -28,13 +28,13 @@ public class UsersRepository implements IUsersRepository {
         UserDB userDB = repository.findByUsername(username);
         User result = null;
         if (userDB != null) {
-            result = IUserMapper.INSTANCE.usersDBToUsers(userDB);
+            result = IUsersMapper.INSTANCE.usersDBToUsers(userDB);
         }
         return result;
     }
 
     public User save(User user) {
-        IUserMapper mapper = IUserMapper.INSTANCE;
+        IUsersMapper mapper = IUsersMapper.INSTANCE;
         UserDB userDB = repository.save(mapper.usersToUsersDB(user));
         return mapper.usersDBToUsers(userDB);
     }

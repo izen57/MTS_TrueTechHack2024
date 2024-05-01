@@ -1,11 +1,12 @@
 package org.glabs.accessibility.domain;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.util.UUID;
 
 @Data
 public class User {
-    private UUID id;
-    private String username;
+    @NotNull private UUID id;
+    @NotNull private String username;
 }
