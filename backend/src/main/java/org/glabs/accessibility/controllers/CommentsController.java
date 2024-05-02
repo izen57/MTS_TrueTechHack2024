@@ -28,10 +28,6 @@ public class CommentsController {
         @ApiResponse(
             responseCode = "201",
             description = "Комментарий успешно создан."
-        ),
-        @ApiResponse(
-            responseCode = "400",
-            description = "Ошибка синтаксиса."
         )
     })
     public ResponseEntity<Comment> createComment(@RequestBody Comment comment) {
@@ -49,10 +45,6 @@ public class CommentsController {
             description = "Комментарий успешно изменён."
         ),
         @ApiResponse(
-            responseCode = "400",
-            description = "Ошибка синтаксиса."
-        ),
-        @ApiResponse(
             responseCode = "404",
             description = "Комментарий не найден."
         )
@@ -61,13 +53,12 @@ public class CommentsController {
         if (comment == null)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
-        Comment result = service.editComment(
-            new Comment(id,
-                comment.getUser(),
-                comment.getText(),
-                comment.getZonedDateTime()
-            )
-        );
+        Comment result = service.editComment(new Comment(
+            id,
+            comment.getUserIn(),
+            comment.getText(),
+            comment.getZonedDateTime()
+        ));
 
         if (result == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -81,10 +72,6 @@ public class CommentsController {
         @ApiResponse(
             responseCode = "200",
             description = "Комментарий успешно удалён."
-        ),
-        @ApiResponse(
-            responseCode = "400",
-            description = "Ошибка синтаксиса."
         ),
         @ApiResponse(
             responseCode = "404",
@@ -106,10 +93,6 @@ public class CommentsController {
             description = "Комментарий найден."
         ),
         @ApiResponse(
-            responseCode = "400",
-            description = "Ошибка синтаксиса."
-        ),
-        @ApiResponse(
             responseCode = "404",
             description = "Комментарий не найден."
         )
@@ -127,10 +110,6 @@ public class CommentsController {
         @ApiResponse(
             responseCode = "200",
             description = "Комментарии успешно возвращены."
-        ),
-        @ApiResponse(
-            responseCode = "400",
-            description = "Ошибка синтаксиса."
         )
     })
     public ResponseEntity<List<Comment>> getComments() {
@@ -143,10 +122,6 @@ public class CommentsController {
         @ApiResponse(
             responseCode = "200",
             description = "Комментарии успешно возвращены."
-        ),
-        @ApiResponse(
-            responseCode = "400",
-            description = "Ошибка синтаксиса."
         )
     })
     public ResponseEntity<List<Comment>> getComments(@RequestParam Pagination pagination) {

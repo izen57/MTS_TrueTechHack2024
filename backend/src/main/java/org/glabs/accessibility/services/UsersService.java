@@ -1,6 +1,7 @@
 package org.glabs.accessibility.services;
 
-import org.glabs.accessibility.domain.User;
+import org.glabs.accessibility.domain.UserIn;
+import org.glabs.accessibility.domain.UserOut;
 import org.glabs.accessibility.repositories.implementations.UsersRepository;
 import org.glabs.accessibility.repositories.interfaces.IUsersJpaRepository;
 import org.glabs.accessibility.repositories.interfaces.IUsersRepository;
@@ -16,18 +17,18 @@ public class UsersService {
         this.repository = new UsersRepository(repository);
     }
 
-    public User getUserBy(UUID id) {
+    public UserOut getUserBy(UUID id) {
         return repository.findUserBy(id);
     }
 
-    public User getUserBy(String username) {
+    public UserOut getUserBy(String username) {
         return repository.findUserBy(username);
     }
 
-    public User createUser(User user) {
-        if (getUserBy(user.getUsername()) != null) {
+    public UserOut createUser(UserIn userIn) {
+        if (getUserBy(userIn.getUsername()) != null) {
             return null;
         }
-        return repository.save(user);
+        return repository.save(userIn);
     }
 }

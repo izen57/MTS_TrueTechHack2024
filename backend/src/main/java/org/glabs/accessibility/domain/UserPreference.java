@@ -1,15 +1,27 @@
 package org.glabs.accessibility.domain;
 
 import lombok.Data;
-import lombok.NonNull;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.awt.*;
 import java.util.UUID;
 
+@Setter
+@Getter
 @Data
 public class UserPreference {
-    @NonNull private UUID id;
-    @NonNull private int fontSize;
-    @NonNull private Color fontColor;
-    @NonNull private Color selectorColor;
+    private UUID id;
+    private int fontSize;
+    private Color fontColor;
+    private Color selectorColor;
+
+    public UserPreference() { }
+
+    public UserPreference(UUID id, int fontSize, Color fontColor, Color selectorColor) {
+        this.id = id;
+        this.fontSize = fontSize;
+        this.fontColor = fontColor;
+        this.selectorColor = selectorColor;
+    }
 }

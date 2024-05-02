@@ -2,11 +2,11 @@ package org.glabs.accessibility.repositories.data;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.proxy.HibernateProxy;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -14,7 +14,6 @@ import java.util.UUID;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
 @Entity
 @Table(name = "_user")
 public class UserDB {
@@ -25,7 +24,7 @@ public class UserDB {
     @Column(name = "name", unique = true)
     private String username;
 
-    @OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<CommentDB> comments;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -35,6 +34,14 @@ public class UserDB {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_credentials_id")
     private UserCredentialsDB credentialsDB;
+
+    public UserDB() {
+        id = null;
+        username = "";
+        comments = new LinkedList<>();
+        preferenceDB = null;
+        credentialsDB = null;
+    }
 
     @Override
     public final boolean equals(Object o) {

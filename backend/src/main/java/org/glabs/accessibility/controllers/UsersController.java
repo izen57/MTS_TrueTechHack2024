@@ -3,7 +3,8 @@ package org.glabs.accessibility.controllers;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.glabs.accessibility.domain.User;
+import org.glabs.accessibility.domain.UserIn;
+import org.glabs.accessibility.domain.UserOut;
 import org.glabs.accessibility.services.UsersService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -26,16 +27,19 @@ public class UsersController {
         @ApiResponse(
             responseCode = "201",
             description = "Пользователь успешно создан."
+        ),
+        @ApiResponse(
+            responseCode = "409",
+            description = "Такой пользователь уже существует."
         )
     })
     @PostMapping(value = "/users")
-    public ResponseEntity<Void> createUser(@RequestBody User user) {
-        HttpStatus status = HttpStatus.CREATED;
-        user = service.createUser(user);
-        if (user == null) {
-            status = HttpStatus.INTERNAL_SERVER_ERROR;
-        }
-        return new ResponseEntity<>(status);
+    public ResponseEntity<UserOut> createUser(@RequestBody UserIn userIn) {
+        UserOut userOut = service.createUser(userIn);
+        if (userOut == null)
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        else
+            return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @Operation(responses = {
@@ -47,16 +51,17 @@ public class UsersController {
             description = "Пользователь не найден."
         )
     })
-    @GetMapping("/users/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable UUID id) {
+    //@GetMapping("/users/{id}")
+    public ResponseEntity<UserOut> getUserById(@PathVariable UUID id) {
         HttpStatus status = HttpStatus.OK;
         HttpHeaders headers = new HttpHeaders();
-        User user = service.getUserBy(id);
-        if (user == null) {
+        UserOut userOut = service.getUserBy(id);
+        if (userOut == null) {
             status = HttpStatus.NOT_FOUND;
             headers.setLocation(URI.create("/"));
         }
-        return new ResponseEntity<>(user, status);
+
+        return new ResponseEntity<>(userOut, status);
     }
 
     @Operation(responses = {
@@ -70,14 +75,14 @@ public class UsersController {
         )
     })
     @GetMapping("/users/{username}")
-    public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
+    public ResponseEntity<UserOut> getUserByUsername(@PathVariable String username) {
         HttpStatus status = HttpStatus.OK;
         HttpHeaders headers = new HttpHeaders();
-        User user = service.getUserBy(username);
-        if (user == null) {
+        UserOut userOut = service.getUserBy(username);
+        if (userOut == null) {
             status = HttpStatus.NOT_FOUND;
             headers.setLocation(URI.create("/"));
         }
-        return new ResponseEntity<>(user, status);
+        return new ResponseEntity<>(userOut, status);
     }
 }
