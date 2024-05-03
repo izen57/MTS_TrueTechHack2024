@@ -15,6 +15,8 @@ public class UserOut {
     @NonNull private UserPreference preference;
     @NonNull private CustomUserDetails credentials;
 
+    public UserOut() { }
+
     public UserOut(UUID id, String username) {
         this.id = id;
         this.username = username;

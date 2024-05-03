@@ -8,8 +8,9 @@ import org.mapstruct.Mapping;
 
 @Mapper(uses = { IUserCredentialsCustomDetailsMapper.class, IPreferencesMapper.class })
 public interface IUsersMapper {
-//    @Mapping(source = "preference", target = "preferenceDB")
-//    @Mapping(source = "credentials", target = "credentialsDB")
+    @Mapping(target = "preferenceDB", ignore = true)
+    @Mapping(target = "credentialsDB", ignore = true)
+    @Mapping(target = "comments", ignore = true)
     UserDB usersToUsersDB(UserIn userIn);
 
     @Mapping(source = "preferenceDB", target = "preference")

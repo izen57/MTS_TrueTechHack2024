@@ -11,6 +11,7 @@ public class CustomUserDetails implements UserDetails {
     private UUID id;
     private String login;
     private String password;
+    private UserIn userIn;
     private boolean accountIsNotExpired;
     private boolean accountIsNotLocked;
     private boolean credentialsAreNotExpired;
@@ -32,6 +33,14 @@ public class CustomUserDetails implements UserDetails {
     @Override
     public String getUsername() {
         return login;
+    }
+
+    public UserIn getUserIn() {
+        return userIn;
+    }
+
+    public void setUserIn(UserIn userIn) {
+        this.userIn = userIn;
     }
 
     /**

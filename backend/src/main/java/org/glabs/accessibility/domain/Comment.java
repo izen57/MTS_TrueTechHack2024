@@ -9,7 +9,7 @@ import java.util.UUID;
 @Data
 public class Comment {
     @NonNull private UUID id;
-    @NonNull private UserIn userIn;
+    @NonNull private UserIn user;
     @NonNull private String text;
     @NonNull private ZonedDateTime zonedDateTime;
 }
