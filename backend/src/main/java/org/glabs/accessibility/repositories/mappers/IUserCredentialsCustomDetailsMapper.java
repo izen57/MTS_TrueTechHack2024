@@ -4,7 +4,7 @@ import org.glabs.accessibility.domain.CustomUserDetails;
 import org.glabs.accessibility.repositories.data.UserCredentialsDB;
 import org.mapstruct.*;
 
-@Mapper
+@Mapper(uses = IUsersMapper.class)
 public interface IUserCredentialsCustomDetailsMapper {
     @Mapping(source = "userIn", target = "user")
     @IterableMapping(nullValueMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT)
