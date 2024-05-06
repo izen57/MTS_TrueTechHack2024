@@ -2,14 +2,15 @@ package org.glabs.accessibility.repositories.mappers;
 
 import org.glabs.accessibility.domain.CustomUserDetails;
 import org.glabs.accessibility.repositories.data.UserCredentialsDB;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import org.mapstruct.*;
 
 @Mapper
 public interface IUserCredentialsCustomDetailsMapper {
     @Mapping(source = "userIn", target = "user")
-    UserCredentialsDB userDetailsToCredentials(CustomUserDetails details);
+    @IterableMapping(nullValueMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT)
+    UserCredentialsDB userDetailsToCredentials(CustomUserDetails details, @Context CycleAvoidingMappingContext context);
 
     @Mapping(source = "user", target = "userIn")
-    CustomUserDetails credentialsToUserDetails(UserCredentialsDB credentials);
+    @IterableMapping(nullValueMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT)
+    CustomUserDetails credentialsToUserDetails(UserCredentialsDB credentials, @Context CycleAvoidingMappingContext context);
 }

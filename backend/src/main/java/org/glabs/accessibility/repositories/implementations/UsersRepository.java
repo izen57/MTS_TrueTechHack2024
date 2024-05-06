@@ -5,6 +5,7 @@ import org.glabs.accessibility.domain.UserOut;
 import org.glabs.accessibility.repositories.data.UserDB;
 import org.glabs.accessibility.repositories.interfaces.IUsersJpaRepository;
 import org.glabs.accessibility.repositories.interfaces.IUsersRepository;
+import org.glabs.accessibility.repositories.mappers.CycleAvoidingMappingContext;
 import org.glabs.accessibility.repositories.mappers.IUsersMapper;
 import org.mapstruct.factory.Mappers;
 
@@ -23,7 +24,7 @@ public class UsersRepository implements IUsersRepository {
         UserDB userDB = repository.findById(id).orElse(null);
         UserOut result = null;
         if (userDB != null) {
-            result = mapper.usersDBToUsers(userDB);
+            result = mapper.usersDBToUsersOut(userDB, new CycleAvoidingMappingContext());
         }
         return result;
     }
@@ -32,13 +33,13 @@ public class UsersRepository implements IUsersRepository {
         UserDB userDB = repository.findByUsername(username);
         UserOut result = null;
         if (userDB != null) {
-            result = mapper.usersDBToUsers(userDB);
+            result = mapper.usersDBToUsersOut(userDB, new CycleAvoidingMappingContext());
         }
         return result;
     }
 
     public UserOut save(UserIn userIn) {
-        UserDB userDB = repository.save(mapper.usersToUsersDB(userIn));
-        return mapper.usersDBToUsers(userDB);
+        UserDB userDB = repository.save(mapper.usersInToUsersDB(userIn, new CycleAvoidingMappingContext()));
+        return mapper.usersDBToUsersOut(userDB, new CycleAvoidingMappingContext());
     }
 }

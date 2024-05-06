@@ -4,6 +4,7 @@ import org.glabs.accessibility.domain.Comment;
 import org.glabs.accessibility.repositories.data.CommentDB;
 import org.glabs.accessibility.repositories.interfaces.ICommentsRepository;
 import org.glabs.accessibility.repositories.interfaces.IJpaCommentsRepositoryDeleteMethod;
+import org.glabs.accessibility.repositories.mappers.CycleAvoidingMappingContext;
 import org.glabs.accessibility.repositories.mappers.ICommentsMapper;
 import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Repository;
@@ -24,19 +25,19 @@ public class CommentsDBRepository implements ICommentsRepository {
 
     @Override
     public Comment createComment(Comment comment) {
-        CommentDB commentDB = mapper.commentToCommentDB(comment);
+        CommentDB commentDB = mapper.commentToCommentDB(comment, new CycleAvoidingMappingContext());
         CommentDB result = repository.save(commentDB);
-        return mapper.commentDBToComment(result);
+        return mapper.commentDBToComment(result, new CycleAvoidingMappingContext());
     }
 
     @Override
     public Comment editComment(Comment comment) {
-        CommentDB commentDB = mapper.commentToCommentDB(comment);
+        CommentDB commentDB = mapper.commentToCommentDB(comment, new CycleAvoidingMappingContext());
         Optional<CommentDB> result = repository.findById(comment.getId());
         if (result.isEmpty())
             return null;
         else
-            return mapper.commentDBToComment(result.get());
+            return mapper.commentDBToComment(result.get(), new CycleAvoidingMappingContext());
     }
 
     @Override
@@ -50,14 +51,14 @@ public class CommentsDBRepository implements ICommentsRepository {
         if (result.isEmpty())
             return null;
         else
-            return mapper.commentDBToComment(result.get());
+            return mapper.commentDBToComment(result.get(), new CycleAvoidingMappingContext());
     }
 
     @Override
     public List<Comment> getComments() {
         return repository.findAll()
             .stream()
-            .map(c -> mapper.commentDBToComment(c))
+            .map(c -> mapper.commentDBToComment(c, new CycleAvoidingMappingContext()))
             .toList();
     }
 
@@ -65,7 +66,7 @@ public class CommentsDBRepository implements ICommentsRepository {
     public List<Comment> getComments(int pageNumber, int pageSize) {
         return repository.findAll()
             .stream()
-            .map(c -> mapper.commentDBToComment(c))
+            .map(c -> mapper.commentDBToComment(c, new CycleAvoidingMappingContext()))
             .skip((pageNumber - 1) * pageSize)
             .limit(pageSize)
             .toList();

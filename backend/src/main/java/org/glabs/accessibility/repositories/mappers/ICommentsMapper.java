@@ -2,14 +2,15 @@ package org.glabs.accessibility.repositories.mappers;
 
 import org.glabs.accessibility.domain.Comment;
 import org.glabs.accessibility.repositories.data.CommentDB;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import org.mapstruct.*;
 
 @Mapper(uses = IUsersMapper.class)
 public interface ICommentsMapper {
     @Mapping(source = "id", target = "ID")
-    CommentDB commentToCommentDB(Comment comment);
+    @IterableMapping(nullValueMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT)
+    CommentDB commentToCommentDB(Comment comment, @Context CycleAvoidingMappingContext context);
 
     @Mapping(source = "ID", target = "id")
-    Comment commentDBToComment(CommentDB commentDB);
+    @IterableMapping(nullValueMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT)
+    Comment commentDBToComment(CommentDB commentDB, @Context CycleAvoidingMappingContext context);
 }
