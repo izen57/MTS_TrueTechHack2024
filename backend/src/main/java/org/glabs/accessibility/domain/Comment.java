@@ -11,5 +11,5 @@ public class Comment {
     @NonNull private UUID id;
     @NonNull private UserIn user;
     @NonNull private String text;
-    @NonNull private ZonedDateTime zonedDateTime;
+    @NonNull private ZonedDateTime dateTime;
 }

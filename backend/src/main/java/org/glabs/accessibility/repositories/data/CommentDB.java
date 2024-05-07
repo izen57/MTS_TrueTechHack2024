@@ -22,5 +22,5 @@ public class CommentDB {
     private UserDB user;
 
     @NotNull private String text;
-    @NotNull private ZonedDateTime zonedDateTime;
+    @NotNull private ZonedDateTime dateTime;
 }
