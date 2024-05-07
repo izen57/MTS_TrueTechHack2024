@@ -15,7 +15,7 @@ import java.util.UUID;
 public class EventDB {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private UUID ID;
 
     @NotNull private String title;
     @NotNull private String description;

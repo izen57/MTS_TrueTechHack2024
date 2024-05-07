@@ -109,7 +109,7 @@ public class CommentsController {
     @Operation(responses = {
         @ApiResponse(
             responseCode = "200",
-            description = "Комментарии успешно возвращены."
+            description = "Комментарии найдены."
         )
     })
     public ResponseEntity<List<Comment>> getComments() {
@@ -121,7 +121,7 @@ public class CommentsController {
     @Operation(responses = {
         @ApiResponse(
             responseCode = "200",
-            description = "Комментарии успешно возвращены."
+            description = "Комментарии найдены."
         )
     })
     public ResponseEntity<List<Comment>> getComments(@RequestParam Pagination pagination) {

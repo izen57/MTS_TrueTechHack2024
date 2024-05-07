@@ -4,11 +4,9 @@ import lombok.Data;
 import lombok.NonNull;
 
 import java.time.ZonedDateTime;
-import java.util.UUID;
 
 @Data
-public class Event {
-    @NonNull private UUID id;
+public class EventEdit {
     @NonNull private String title;
     @NonNull private String description;
     @NonNull private ZonedDateTime beginDateTime;
