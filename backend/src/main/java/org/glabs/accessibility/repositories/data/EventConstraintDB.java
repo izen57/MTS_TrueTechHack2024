@@ -14,6 +14,7 @@ public class EventConstraintDB {
     @Id
     @Column(unique = true)
     private String name;
+
     @NotNull private String description;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
