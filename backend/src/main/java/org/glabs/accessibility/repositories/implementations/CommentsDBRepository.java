@@ -3,7 +3,7 @@ package org.glabs.accessibility.repositories.implementations;
 import org.glabs.accessibility.domain.Comment;
 import org.glabs.accessibility.repositories.data.CommentDB;
 import org.glabs.accessibility.repositories.interfaces.ICommentsRepository;
-import org.glabs.accessibility.repositories.interfaces.IJpaRepositoryDeleteMethod;
+import org.glabs.accessibility.repositories.interfaces.IJpaCommentsDBRepositoryExtension;
 import org.glabs.accessibility.repositories.mappers.CycleAvoidingMappingContext;
 import org.glabs.accessibility.repositories.mappers.ICommentsMapper;
 import org.mapstruct.factory.Mappers;
@@ -15,10 +15,10 @@ import java.util.UUID;
 
 @Repository
 public class CommentsDBRepository implements ICommentsRepository {
-    private IJpaRepositoryDeleteMethod<CommentDB, UUID> repository;
+    IJpaCommentsDBRepositoryExtension repository;
     ICommentsMapper mapper;
 
-    public CommentsDBRepository(IJpaRepositoryDeleteMethod<CommentDB, UUID> repo) {
+    public CommentsDBRepository(IJpaCommentsDBRepositoryExtension repo) {
         repository = repo;
         mapper = Mappers.getMapper(ICommentsMapper.class);
     }

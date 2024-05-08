@@ -3,7 +3,7 @@ package org.glabs.accessibility.repositories.implementations;
 import org.glabs.accessibility.domain.Event;
 import org.glabs.accessibility.repositories.data.EventDB;
 import org.glabs.accessibility.repositories.interfaces.IEventsRepository;
-import org.glabs.accessibility.repositories.interfaces.IJpaRepositoryDeleteMethod;
+import org.glabs.accessibility.repositories.interfaces.IJpaEventsDBRepositoryExtension;
 import org.glabs.accessibility.repositories.mappers.IEventsMapper;
 import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Repository;
@@ -14,10 +14,10 @@ import java.util.UUID;
 
 @Repository
 public class EventsDBRepository implements IEventsRepository {
-    private IJpaRepositoryDeleteMethod<EventDB, UUID> repository;
+    private IJpaEventsDBRepositoryExtension repository;
     IEventsMapper mapper;
 
-    public EventsDBRepository(IJpaRepositoryDeleteMethod<EventDB, UUID> repo) {
+    public EventsDBRepository(IJpaEventsDBRepositoryExtension repo) {
         repository = repo;
         mapper = Mappers.getMapper(IEventsMapper.class);
     }
