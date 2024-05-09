@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface IJpaEventsDBRepositoryExtension extends JpaRepository<EventDB, UUID> {
+public interface IEventsJpaRepository extends JpaRepository<EventDB, UUID> {
     int deleteByID(UUID id);
 }

@@ -4,7 +4,7 @@ import jakarta.annotation.Nullable;
 import org.glabs.accessibility.domain.Event;
 import org.glabs.accessibility.repositories.implementations.EventsDBRepository;
 import org.glabs.accessibility.repositories.interfaces.IEventsRepository;
-import org.glabs.accessibility.repositories.interfaces.IJpaEventsDBRepositoryExtension;
+import org.glabs.accessibility.repositories.interfaces.IEventsJpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.UUID;
 public class EventsService {
     public IEventsRepository repository;
 
-    public EventsService(IJpaEventsDBRepositoryExtension repository) {
+    public EventsService(IEventsJpaRepository repository) {
         this.repository = new EventsDBRepository(repository);
     }
 
