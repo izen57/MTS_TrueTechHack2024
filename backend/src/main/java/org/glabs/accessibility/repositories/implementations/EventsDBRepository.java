@@ -6,20 +6,18 @@ import org.glabs.accessibility.repositories.interfaces.IEventsRepository;
 import org.glabs.accessibility.repositories.interfaces.IJpaEventsDBRepositoryExtension;
 import org.glabs.accessibility.repositories.mappers.IEventsMapper;
 import org.mapstruct.factory.Mappers;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Repository
 public class EventsDBRepository implements IEventsRepository {
     private IJpaEventsDBRepositoryExtension repository;
     IEventsMapper mapper;
 
     public EventsDBRepository(IJpaEventsDBRepositoryExtension repo) {
         repository = repo;
-        mapper = Mappers.getMapper(IEventsMapper.class);
+        mapper = IEventsMapper.INSTANCE;
     }
 
     @Override

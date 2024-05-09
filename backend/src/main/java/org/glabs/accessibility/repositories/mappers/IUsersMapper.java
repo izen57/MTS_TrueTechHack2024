@@ -4,9 +4,12 @@ import org.glabs.accessibility.domain.UserIn;
 import org.glabs.accessibility.domain.UserOut;
 import org.glabs.accessibility.repositories.data.UserDB;
 import org.mapstruct.*;
+import org.mapstruct.factory.Mappers;
 
 @Mapper(uses = { IUserCredentialsCustomDetailsMapper.class, IPreferencesMapper.class, ICommentsMapper.class })
 public interface IUsersMapper {
+    IUsersMapper INSTANCE = Mappers.getMapper(IUsersMapper.class);
+
     @Mapping(target = "preferenceDB", ignore = true)
     @Mapping(target = "credentialsDB", ignore = true)
     @Mapping(target = "comments", ignore = true)

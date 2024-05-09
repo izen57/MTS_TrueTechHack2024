@@ -8,18 +8,16 @@ import org.glabs.accessibility.repositories.interfaces.IUsersRepository;
 import org.glabs.accessibility.repositories.mappers.CycleAvoidingMappingContext;
 import org.glabs.accessibility.repositories.mappers.IUsersMapper;
 import org.mapstruct.factory.Mappers;
-import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
-@Repository
 public class UsersRepository implements IUsersRepository {
     private final IUsersJpaRepository repository;
     private IUsersMapper mapper;
 
     public UsersRepository(IUsersJpaRepository repository) {
         this.repository = repository;
-        mapper = Mappers.getMapper(IUsersMapper.class);
+        mapper = IUsersMapper.INSTANCE;
     }
 
     public UserOut findUserBy(UUID id) {

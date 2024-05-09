@@ -7,20 +7,18 @@ import org.glabs.accessibility.repositories.interfaces.IJpaCommentsDBRepositoryE
 import org.glabs.accessibility.repositories.mappers.CycleAvoidingMappingContext;
 import org.glabs.accessibility.repositories.mappers.ICommentsMapper;
 import org.mapstruct.factory.Mappers;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Repository
 public class CommentsDBRepository implements ICommentsRepository {
     IJpaCommentsDBRepositoryExtension repository;
     ICommentsMapper mapper;
 
     public CommentsDBRepository(IJpaCommentsDBRepositoryExtension repo) {
         repository = repo;
-        mapper = Mappers.getMapper(ICommentsMapper.class);
+        mapper = ICommentsMapper.INSTANCE;
     }
 
     @Override

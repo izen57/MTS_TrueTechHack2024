@@ -2,7 +2,9 @@ package org.glabs.accessibility.services;
 
 import jakarta.annotation.Nullable;
 import org.glabs.accessibility.domain.Comment;
+import org.glabs.accessibility.repositories.implementations.CommentsDBRepository;
 import org.glabs.accessibility.repositories.interfaces.ICommentsRepository;
+import org.glabs.accessibility.repositories.interfaces.IJpaCommentsDBRepositoryExtension;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,8 +14,8 @@ import java.util.UUID;
 public class CommentsService {
     private ICommentsRepository repository;
 
-    public CommentsService(ICommentsRepository repo) {
-        repository = repo;
+    public CommentsService(IJpaCommentsDBRepositoryExtension repo) {
+        repository = new CommentsDBRepository(repo);
     }
 
     public Comment createComment(Comment comment) {
