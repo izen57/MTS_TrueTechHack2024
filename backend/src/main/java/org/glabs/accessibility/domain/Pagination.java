@@ -2,8 +2,8 @@ package org.glabs.accessibility.domain;
 
 public class Pagination {
     private final int maxPageSize;
-    private int pageSize;
     private final int pageNumber;
+    private int pageSize;
 
     public Pagination() {
         maxPageSize = 50;

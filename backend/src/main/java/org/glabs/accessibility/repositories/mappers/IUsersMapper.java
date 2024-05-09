@@ -6,7 +6,7 @@ import org.glabs.accessibility.repositories.data.UserDB;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(uses = { IUserCredentialsCustomDetailsMapper.class, IPreferencesMapper.class, ICommentsMapper.class })
+@Mapper(uses = {IUserCredentialsCustomDetailsMapper.class, IPreferencesMapper.class, ICommentsMapper.class})
 public interface IUsersMapper {
     IUsersMapper INSTANCE = Mappers.getMapper(IUsersMapper.class);
 

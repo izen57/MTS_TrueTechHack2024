@@ -7,8 +7,12 @@ import java.time.ZonedDateTime;
 
 @Data
 public class EventEdit {
-    @NonNull private String title;
-    @NonNull private String description;
-    @NonNull private ZonedDateTime beginDateTime;
-    @NonNull private ZonedDateTime endDateTime;
+    @NonNull
+    private String title;
+    @NonNull
+    private String description;
+    @NonNull
+    private ZonedDateTime beginDateTime;
+    @NonNull
+    private ZonedDateTime endDateTime;
 }

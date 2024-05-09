@@ -8,9 +8,15 @@ import java.util.UUID;
 
 public interface ICommentsRepository {
     Comment createComment(Comment comment);
+
     Comment editComment(Comment comment);
+
     int deleteByID(UUID id);
-    @Nullable Comment getComment(UUID id);
+
+    @Nullable
+    Comment getComment(UUID id);
+
     List<Comment> getComments();
+
     List<Comment> getComments(int pageNumber, int pageSize);
 }

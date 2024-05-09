@@ -25,10 +25,10 @@ public class EventsController {
 
     @PostMapping(value = "/events")
     @Operation(responses = {
-        @ApiResponse(
-            responseCode = "201",
-            description = "Мероприятие успешно создано."
-        )
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Мероприятие успешно создано."
+            )
     })
     public ResponseEntity<Event> createEvent(@RequestBody Event event) {
         if (event == null)
@@ -40,25 +40,25 @@ public class EventsController {
 
     @PutMapping(value = "/events/{id}")
     @Operation(responses = {
-        @ApiResponse(
-            responseCode = "200",
-            description = "Мероприятие успешно изменено."
-        ),
-        @ApiResponse(
-            responseCode = "404",
-            description = "Мероприятие не найдено."
-        )
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Мероприятие успешно изменено."
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Мероприятие не найдено."
+            )
     })
     public ResponseEntity<Event> editEvent(@RequestBody EventEdit event, @PathVariable UUID id) {
         if (event == null)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
         Event result = service.editEvent(new Event(
-            id,
-            event.getTitle(),
-            event.getDescription(),
-            event.getBeginDateTime(),
-            event.getEndDateTime()
+                id,
+                event.getTitle(),
+                event.getDescription(),
+                event.getBeginDateTime(),
+                event.getEndDateTime()
         ));
 
         if (result == null)
@@ -70,14 +70,14 @@ public class EventsController {
 
     @DeleteMapping(value = "/events/{id}")
     @Operation(responses = {
-        @ApiResponse(
-            responseCode = "200",
-            description = "Мероприятие успешно удалено."
-        ),
-        @ApiResponse(
-            responseCode = "404",
-            description = "Мероприятие не найдено."
-        )
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Мероприятие успешно удалено."
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Мероприятие не найдено."
+            )
     })
     public ResponseEntity<Void> deleteEvent(@PathVariable UUID id) {
         boolean result = service.deleteEvent(id);
@@ -89,14 +89,14 @@ public class EventsController {
 
     @GetMapping(value = "/events/{id}")
     @Operation(responses = {
-        @ApiResponse(
-            responseCode = "200",
-            description = "Мероприятие найдено."
-        ),
-        @ApiResponse(
-            responseCode = "404",
-            description = "Мероприятие не найдено."
-        )
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Мероприятие найдено."
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Мероприятие не найдено."
+            )
     })
     public ResponseEntity<Event> getEvent(@PathVariable UUID id) {
         Event result = service.getEvent(id);
@@ -108,10 +108,10 @@ public class EventsController {
 
     @GetMapping(value = "/events")
     @Operation(responses = {
-        @ApiResponse(
-            responseCode = "200",
-            description = "Мероприятия найдены."
-        )
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Мероприятия найдены."
+            )
     })
     public ResponseEntity<List<Event>> getEvents() {
         List<Event> result = service.getEvents();
@@ -120,10 +120,10 @@ public class EventsController {
 
     @GetMapping(value = "/event/{pagination}")
     @Operation(responses = {
-        @ApiResponse(
-            responseCode = "200",
-            description = "Мероприятия найдены."
-        )
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Мероприятия найдены."
+            )
     })
     public ResponseEntity<List<Event>> getEvents(@RequestParam Pagination pagination) {
         List<Event> result = service.getEvents(pagination.getPageNumber(), pagination.getPageSize());

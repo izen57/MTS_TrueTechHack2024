@@ -30,7 +30,8 @@ public class EventsService {
         return repository.deleteByID(id) == 1;
     }
 
-    @Nullable public Event getEvent(UUID id) {
+    @Nullable
+    public Event getEvent(UUID id) {
         return repository.getEvent(id);
     }
 

@@ -7,6 +7,8 @@ import java.util.UUID;
 
 @Data
 public class UserIn {
-    @NonNull private UUID id;
-    @NonNull private String username;
+    @NonNull
+    private UUID id;
+    @NonNull
+    private String username;
 }

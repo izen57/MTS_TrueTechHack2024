@@ -15,12 +15,15 @@ public class EventConstraintDB {
     @Column(unique = true)
     private String name;
 
-    @NotNull private String description;
+    @NotNull
+    private String description;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "event_id")
     private EventDB event;
 
-    @NotNull private ZonedDateTime beginZonedDateTime;
-    @NotNull private ZonedDateTime endZonedDateTime;
+    @NotNull
+    private ZonedDateTime beginZonedDateTime;
+    @NotNull
+    private ZonedDateTime endZonedDateTime;
 }

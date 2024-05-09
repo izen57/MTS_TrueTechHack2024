@@ -9,6 +9,7 @@ import org.mapstruct.factory.Mappers;
 public interface IUserCredentialsCustomDetailsMapper {
 
     IUserCredentialsCustomDetailsMapper INSTANCE = Mappers.getMapper(IUserCredentialsCustomDetailsMapper.class);
+
     @Mapping(source = "userIn", target = "user")
     @IterableMapping(nullValueMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT)
     UserCredentialsDB userDetailsToCredentials(CustomUserDetails details, @Context CycleAvoidingMappingContext context);

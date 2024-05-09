@@ -17,10 +17,10 @@ public class SecurityConfig {
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
         UserDetails user =
-            User.withUsername("user")
-                .password(encoder().encode("pass"))
-                .roles("USER")
-                .build();
+                User.withUsername("user")
+                        .password(encoder().encode("pass"))
+                        .roles("USER")
+                        .build();
         return new InMemoryUserDetailsManager(user);
     }
 

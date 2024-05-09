@@ -6,7 +6,6 @@ import org.glabs.accessibility.repositories.interfaces.ICommentsRepository;
 import org.glabs.accessibility.repositories.interfaces.IJpaCommentsDBRepositoryExtension;
 import org.glabs.accessibility.repositories.mappers.CycleAvoidingMappingContext;
 import org.glabs.accessibility.repositories.mappers.ICommentsMapper;
-import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 import java.util.Optional;
@@ -55,18 +54,18 @@ public class CommentsDBRepository implements ICommentsRepository {
     @Override
     public List<Comment> getComments() {
         return repository.findAll()
-            .stream()
-            .map(c -> mapper.commentDBToComment(c, new CycleAvoidingMappingContext()))
-            .toList();
+                .stream()
+                .map(c -> mapper.commentDBToComment(c, new CycleAvoidingMappingContext()))
+                .toList();
     }
 
     @Override
     public List<Comment> getComments(int pageNumber, int pageSize) {
         return repository.findAll()
-            .stream()
-            .map(c -> mapper.commentDBToComment(c, new CycleAvoidingMappingContext()))
-            .skip((pageNumber - 1) * pageSize)
-            .limit(pageSize)
-            .toList();
+                .stream()
+                .map(c -> mapper.commentDBToComment(c, new CycleAvoidingMappingContext()))
+                .skip((pageNumber - 1) * pageSize)
+                .limit(pageSize)
+                .toList();
     }
 }

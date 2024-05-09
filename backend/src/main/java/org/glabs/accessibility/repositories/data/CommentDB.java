@@ -21,6 +21,8 @@ public class CommentDB {
     @JoinColumn(name = "user_id")
     private UserDB user;
 
-    @NotNull private String text;
-    @NotNull private ZonedDateTime dateTime;
+    @NotNull
+    private String text;
+    @NotNull
+    private ZonedDateTime dateTime;
 }

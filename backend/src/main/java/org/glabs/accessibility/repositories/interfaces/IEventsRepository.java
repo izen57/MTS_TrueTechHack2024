@@ -8,9 +8,15 @@ import java.util.UUID;
 
 public interface IEventsRepository {
     Event createEvent(Event event);
+
     Event editEvent(Event event);
+
     int deleteByID(UUID id);
-    @Nullable Event getEvent(UUID id);
+
+    @Nullable
+    Event getEvent(UUID id);
+
     List<Event> getEvents();
+
     List<Event> getEvents(int pageNumber, int pageSize);
 }

@@ -10,6 +10,7 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface IEventsMapper {
     IEventsMapper INSTANCE = Mappers.getMapper(IEventsMapper.class);
+
     @IterableMapping(nullValueMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT)
     EventDB eventToEventDB(Event event);
 

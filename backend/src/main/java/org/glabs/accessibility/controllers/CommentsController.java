@@ -25,10 +25,10 @@ public class CommentsController {
 
     @PostMapping(value = "/comments")
     @Operation(responses = {
-        @ApiResponse(
-            responseCode = "201",
-            description = "Комментарий успешно создан."
-        )
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Комментарий успешно создан."
+            )
     })
     public ResponseEntity<Comment> createComment(@RequestBody Comment comment) {
         if (comment == null)
@@ -40,24 +40,24 @@ public class CommentsController {
 
     @PutMapping(value = "/comments/{id}")
     @Operation(responses = {
-        @ApiResponse(
-            responseCode = "200",
-            description = "Комментарий успешно изменён."
-        ),
-        @ApiResponse(
-            responseCode = "404",
-            description = "Комментарий не найден."
-        )
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Комментарий успешно изменён."
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Комментарий не найден."
+            )
     })
     public ResponseEntity<Comment> editComment(@RequestBody CommentEdit comment, @PathVariable UUID id) {
         if (comment == null)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
         Comment result = service.editComment(new Comment(
-            id,
-            comment.getUserIn(),
-            comment.getText(),
-            comment.getZonedDateTime()
+                id,
+                comment.getUserIn(),
+                comment.getText(),
+                comment.getZonedDateTime()
         ));
 
         if (result == null)
@@ -69,14 +69,14 @@ public class CommentsController {
 
     @DeleteMapping(value = "/comments/{id}")
     @Operation(responses = {
-        @ApiResponse(
-            responseCode = "200",
-            description = "Комментарий успешно удалён."
-        ),
-        @ApiResponse(
-            responseCode = "404",
-            description = "Комментарий не найден."
-        )
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Комментарий успешно удалён."
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Комментарий не найден."
+            )
     })
     public ResponseEntity<Void> deleteComment(@PathVariable UUID id) {
         boolean result = service.deleteComment(id);
@@ -88,14 +88,14 @@ public class CommentsController {
 
     @GetMapping(value = "/comments/{id}")
     @Operation(responses = {
-        @ApiResponse(
-            responseCode = "200",
-            description = "Комментарий найден."
-        ),
-        @ApiResponse(
-            responseCode = "404",
-            description = "Комментарий не найден."
-        )
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Комментарий найден."
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Комментарий не найден."
+            )
     })
     public ResponseEntity<Comment> getComment(@PathVariable UUID id) {
         Comment result = service.getComment(id);
@@ -107,10 +107,10 @@ public class CommentsController {
 
     @GetMapping(value = "/comments")
     @Operation(responses = {
-        @ApiResponse(
-            responseCode = "200",
-            description = "Комментарии найдены."
-        )
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Комментарии найдены."
+            )
     })
     public ResponseEntity<List<Comment>> getComments() {
         List<Comment> result = service.getComments();
@@ -119,10 +119,10 @@ public class CommentsController {
 
     @GetMapping(value = "/comments/{pagination}")
     @Operation(responses = {
-        @ApiResponse(
-            responseCode = "200",
-            description = "Комментарии найдены."
-        )
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Комментарии найдены."
+            )
     })
     public ResponseEntity<List<Comment>> getComments(@RequestParam Pagination pagination) {
         List<Comment> result = service.getComments(pagination.getPageNumber(), pagination.getPageSize());

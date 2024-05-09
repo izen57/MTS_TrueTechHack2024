@@ -17,7 +17,8 @@ public class UserPreference {
     private Color fontColor;
     private Color selectorColor;
 
-    public UserPreference() { }
+    public UserPreference() {
+    }
 
     public UserPreference(UUID id, UserIn user, int fontSize, Color fontColor, Color selectorColor) {
         this.id = id;

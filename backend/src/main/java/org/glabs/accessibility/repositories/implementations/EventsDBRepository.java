@@ -5,15 +5,14 @@ import org.glabs.accessibility.repositories.data.EventDB;
 import org.glabs.accessibility.repositories.interfaces.IEventsRepository;
 import org.glabs.accessibility.repositories.interfaces.IJpaEventsDBRepositoryExtension;
 import org.glabs.accessibility.repositories.mappers.IEventsMapper;
-import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 public class EventsDBRepository implements IEventsRepository {
-    private IJpaEventsDBRepositoryExtension repository;
     IEventsMapper mapper;
+    private IJpaEventsDBRepositoryExtension repository;
 
     public EventsDBRepository(IJpaEventsDBRepositoryExtension repo) {
         repository = repo;
@@ -54,18 +53,18 @@ public class EventsDBRepository implements IEventsRepository {
     @Override
     public List<Event> getEvents() {
         return repository.findAll()
-            .stream()
-            .map(e -> mapper.eventDBToEvent(e))
-            .toList();
+                .stream()
+                .map(e -> mapper.eventDBToEvent(e))
+                .toList();
     }
 
     @Override
     public List<Event> getEvents(int pageNumber, int pageSize) {
         return repository.findAll()
-            .stream()
-            .map(c -> mapper.eventDBToEvent(c))
-            .skip((pageNumber - 1) * pageSize)
-            .limit(pageSize)
-            .toList();
+                .stream()
+                .map(c -> mapper.eventDBToEvent(c))
+                .skip((pageNumber - 1) * pageSize)
+                .limit(pageSize)
+                .toList();
     }
 }

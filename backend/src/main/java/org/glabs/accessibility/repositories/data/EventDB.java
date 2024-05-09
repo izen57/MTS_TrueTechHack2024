@@ -17,11 +17,16 @@ public class EventDB {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID ID;
 
-    @NotNull private String title;
-    @NotNull private String description;
-    @NotNull private ZonedDateTime beginZonedDateTime;
-    @NotNull private ZonedDateTime endZonedDateTime;
+    @NotNull
+    private String title;
+    @NotNull
+    private String description;
+    @NotNull
+    private ZonedDateTime beginZonedDateTime;
+    @NotNull
+    private ZonedDateTime endZonedDateTime;
 
     @OneToMany(mappedBy = "event", orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @NotNull private List<EventConstraintDB> constraintDBList;
+    @NotNull
+    private List<EventConstraintDB> constraintDBList;
 }

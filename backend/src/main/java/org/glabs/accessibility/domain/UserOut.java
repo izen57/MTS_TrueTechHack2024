@@ -9,13 +9,19 @@ import java.util.UUID;
 
 @Data
 public class UserOut {
-    @NonNull private UUID id;
-    @NonNull private String username;
-    @NonNull private List<Comment> comments;
-    @NonNull private UserPreference preference;
-    @NonNull private CustomUserDetails credentials;
+    @NonNull
+    private UUID id;
+    @NonNull
+    private String username;
+    @NonNull
+    private List<Comment> comments;
+    @NonNull
+    private UserPreference preference;
+    @NonNull
+    private CustomUserDetails credentials;
 
-    public UserOut() { }
+    public UserOut() {
+    }
 
     public UserOut(UUID id, String username) {
         this.id = id;

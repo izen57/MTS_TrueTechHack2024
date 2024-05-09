@@ -24,14 +24,14 @@ public class UsersController {
     }
 
     @Operation(responses = {
-        @ApiResponse(
-            responseCode = "201",
-            description = "Пользователь успешно создан."
-        ),
-        @ApiResponse(
-            responseCode = "409",
-            description = "Такой пользователь уже существует."
-        )
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Пользователь успешно создан."
+            ),
+            @ApiResponse(
+                    responseCode = "409",
+                    description = "Такой пользователь уже существует."
+            )
     })
     @PostMapping(value = "/users")
     public ResponseEntity<UserOut> createUser(@RequestBody UserIn userIn) {
@@ -43,13 +43,13 @@ public class UsersController {
     }
 
     @Operation(responses = {
-        @ApiResponse(
-            responseCode = "200",
-            description = "Пользователь найден."),
-        @ApiResponse(
-            responseCode = "404",
-            description = "Пользователь не найден."
-        )
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Пользователь найден."),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Пользователь не найден."
+            )
     })
     //@GetMapping("/users/{id}")
     public ResponseEntity<UserOut> getUserById(@PathVariable UUID id) {
@@ -65,14 +65,14 @@ public class UsersController {
     }
 
     @Operation(responses = {
-        @ApiResponse(
-            responseCode = "200",
-            description = "Пользователь найден."
-        ),
-        @ApiResponse(
-            responseCode = "404",
-            description = "Пользователь не найден."
-        )
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Пользователь найден."
+            ),
+            @ApiResponse(
+                    responseCode = "404",
+                    description = "Пользователь не найден."
+            )
     })
     @GetMapping("/users/{username}")
     public ResponseEntity<UserOut> getUserByUsername(@PathVariable String username) {

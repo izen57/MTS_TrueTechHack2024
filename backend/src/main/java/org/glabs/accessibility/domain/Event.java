@@ -8,9 +8,14 @@ import java.util.UUID;
 
 @Data
 public class Event {
-    @NonNull private UUID id;
-    @NonNull private String title;
-    @NonNull private String description;
-    @NonNull private ZonedDateTime beginDateTime;
-    @NonNull private ZonedDateTime endDateTime;
+    @NonNull
+    private UUID id;
+    @NonNull
+    private String title;
+    @NonNull
+    private String description;
+    @NonNull
+    private ZonedDateTime beginDateTime;
+    @NonNull
+    private ZonedDateTime endDateTime;
 }

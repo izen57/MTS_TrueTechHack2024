@@ -8,6 +8,8 @@ import java.util.UUID;
 
 public interface IUsersRepository {
     UserOut findUserBy(UUID id);
+
     UserOut findUserBy(String username);
+
     UserOut save(UserIn userIn);
 }
