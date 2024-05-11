@@ -19,4 +19,6 @@ public interface IEventsRepository {
     List<Event> getEvents();
 
     List<Event> getEvents(int pageNumber, int pageSize);
+
+    Event updateEvent(Event event);
 }

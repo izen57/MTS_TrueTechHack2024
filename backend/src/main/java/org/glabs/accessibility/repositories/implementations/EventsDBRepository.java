@@ -67,4 +67,16 @@ public class EventsDBRepository implements IEventsRepository {
                 .limit(pageSize)
                 .toList();
     }
+
+    @Override
+    public Event updateEvent(Event event) {
+        if (repository.findById(event.getId()).orElse(null) != null){
+            EventDB eventDB = mapper.eventToEventDB(event);
+            repository.save(eventDB);
+            return event;
+        }
+        return null;
+    }
+
+
 }

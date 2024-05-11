@@ -21,9 +21,4 @@ public class EventConstraintDB {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "event_id")
     private EventDB event;
-
-    @NotNull
-    private ZonedDateTime beginZonedDateTime;
-    @NotNull
-    private ZonedDateTime endZonedDateTime;
 }

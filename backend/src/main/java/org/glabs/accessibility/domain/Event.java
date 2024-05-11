@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NonNull;
 
 import java.time.ZonedDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -18,4 +19,5 @@ public class Event {
     private ZonedDateTime beginDateTime;
     @NonNull
     private ZonedDateTime endDateTime;
+    private List<EventAccessibilityFeature> features;
 }
