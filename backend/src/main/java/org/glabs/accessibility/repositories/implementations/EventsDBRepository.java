@@ -2,8 +2,8 @@ package org.glabs.accessibility.repositories.implementations;
 
 import org.glabs.accessibility.domain.Event;
 import org.glabs.accessibility.repositories.data.EventDB;
-import org.glabs.accessibility.repositories.interfaces.IEventsRepository;
 import org.glabs.accessibility.repositories.interfaces.IEventsJpaRepository;
+import org.glabs.accessibility.repositories.interfaces.IEventsRepository;
 import org.glabs.accessibility.repositories.mappers.IEventsMapper;
 
 import java.util.List;
@@ -70,7 +70,7 @@ public class EventsDBRepository implements IEventsRepository {
 
     @Override
     public Event updateEvent(Event event) {
-        if (repository.findById(event.getId()).orElse(null) != null){
+        if (repository.findById(event.getId()).orElse(null) != null) {
             EventDB eventDB = mapper.eventToEventDB(event);
             repository.save(eventDB);
             return event;

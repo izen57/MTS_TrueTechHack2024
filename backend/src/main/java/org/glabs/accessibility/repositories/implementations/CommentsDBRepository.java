@@ -2,8 +2,8 @@ package org.glabs.accessibility.repositories.implementations;
 
 import org.glabs.accessibility.domain.Comment;
 import org.glabs.accessibility.repositories.data.CommentDB;
-import org.glabs.accessibility.repositories.interfaces.ICommentsRepository;
 import org.glabs.accessibility.repositories.interfaces.ICommentsJpaRepository;
+import org.glabs.accessibility.repositories.interfaces.ICommentsRepository;
 import org.glabs.accessibility.repositories.mappers.CycleAvoidingMappingContext;
 import org.glabs.accessibility.repositories.mappers.ICommentsMapper;
 

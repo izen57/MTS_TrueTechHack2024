@@ -3,8 +3,8 @@ package org.glabs.accessibility.services;
 import jakarta.annotation.Nullable;
 import org.glabs.accessibility.domain.Comment;
 import org.glabs.accessibility.repositories.implementations.CommentsDBRepository;
-import org.glabs.accessibility.repositories.interfaces.ICommentsRepository;
 import org.glabs.accessibility.repositories.interfaces.ICommentsJpaRepository;
+import org.glabs.accessibility.repositories.interfaces.ICommentsRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

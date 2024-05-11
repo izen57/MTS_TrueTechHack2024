@@ -6,8 +6,8 @@ import org.glabs.accessibility.domain.AccessibiltyFeatureName;
 import org.glabs.accessibility.domain.Event;
 import org.glabs.accessibility.domain.EventAccessibilityFeature;
 import org.glabs.accessibility.repositories.implementations.EventsDBRepository;
-import org.glabs.accessibility.repositories.interfaces.IEventsRepository;
 import org.glabs.accessibility.repositories.interfaces.IEventsJpaRepository;
+import org.glabs.accessibility.repositories.interfaces.IEventsRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -50,9 +50,9 @@ public class EventsService {
 
     public Event addAccessibiltyFeature(Event event, List<AccessibiltyFeatureName> featureNames) {
         List<EventAccessibilityFeature> features = new ArrayList<>();
-        for (AccessibiltyFeatureName name : featureNames){
+        for (AccessibiltyFeatureName name : featureNames) {
             EventAccessibilityFeature temp = fabric.createAccessibiltyFeature(name);
-            if (temp != null){
+            if (temp != null) {
                 features.add(temp);
             }
         }

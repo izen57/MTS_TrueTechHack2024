@@ -2,7 +2,8 @@ package org.glabs.accessibility.domain;
 
 public enum AccessibilityFeatureFabric {
     INSTANCE;
-    public EventAccessibilityFeature createAccessibiltyFeature(AccessibiltyFeatureName name){
+
+    public EventAccessibilityFeature createAccessibiltyFeature(AccessibiltyFeatureName name) {
         EventAccessibilityFeature feature = null;
         switch (name) {
             case BRAIL -> feature = createBrailTextFeature();
@@ -12,7 +13,8 @@ public enum AccessibilityFeatureFabric {
         }
         return feature;
     }
-    private EventAccessibilityFeature createWheelChairRampFeature(){
+
+    private EventAccessibilityFeature createWheelChairRampFeature() {
         return EventAccessibilityFeature.builder()
                 .name("WheelChairRamp")
                 .description("Helps people with moving disabilities").build();
