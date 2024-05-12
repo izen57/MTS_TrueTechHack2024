@@ -40,7 +40,7 @@ public class UsersController {
         if (userOut == null)
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         else
-            return new ResponseEntity<>(HttpStatus.CREATED);
+            return new ResponseEntity<>(userOut, HttpStatus.CREATED);
     }
 
     @Operation(responses = {
