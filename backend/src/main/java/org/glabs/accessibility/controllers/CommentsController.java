@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-@Tag(name = "Comments", description = "Операции над комментариями")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
+@Tag(name = "Comments", description = "Операции с комментариями")
 public class CommentsController {
     private CommentsService service;
 

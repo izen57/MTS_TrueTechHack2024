@@ -27,6 +27,5 @@ public class EventDB {
     private ZonedDateTime endZonedDateTime;
 
     @OneToMany(mappedBy = "event", orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @NotNull
     private List<EventConstraintDB> constraintDBList;
 }

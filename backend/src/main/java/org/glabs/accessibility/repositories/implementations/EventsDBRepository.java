@@ -2,8 +2,8 @@ package org.glabs.accessibility.repositories.implementations;
 
 import org.glabs.accessibility.domain.Event;
 import org.glabs.accessibility.repositories.data.EventDB;
+import org.glabs.accessibility.repositories.interfaces.IEventsJpaRepository;
 import org.glabs.accessibility.repositories.interfaces.IEventsRepository;
-import org.glabs.accessibility.repositories.interfaces.IJpaEventsDBRepositoryExtension;
 import org.glabs.accessibility.repositories.mappers.IEventsMapper;
 
 import java.util.List;
@@ -12,9 +12,9 @@ import java.util.UUID;
 
 public class EventsDBRepository implements IEventsRepository {
     IEventsMapper mapper;
-    private IJpaEventsDBRepositoryExtension repository;
+    private IEventsJpaRepository repository;
 
-    public EventsDBRepository(IJpaEventsDBRepositoryExtension repo) {
+    public EventsDBRepository(IEventsJpaRepository repo) {
         repository = repo;
         mapper = IEventsMapper.INSTANCE;
     }
@@ -67,4 +67,16 @@ public class EventsDBRepository implements IEventsRepository {
                 .limit(pageSize)
                 .toList();
     }
+
+    @Override
+    public Event updateEvent(Event event) {
+        if (repository.findById(event.getId()).orElse(null) != null) {
+            EventDB eventDB = mapper.eventToEventDB(event);
+            repository.save(eventDB);
+            return event;
+        }
+        return null;
+    }
+
+
 }

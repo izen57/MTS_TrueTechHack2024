@@ -3,6 +3,7 @@ package org.glabs.accessibility.controllers;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.glabs.accessibility.domain.AccessibiltyFeatureName;
 import org.glabs.accessibility.domain.Event;
 import org.glabs.accessibility.domain.EventEdit;
 import org.glabs.accessibility.domain.Pagination;
@@ -14,8 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-@Tag(name = "Events", description = "Операции над мероприятиями")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
+@Tag(name = "Events", description = "Операции с мероприятиями")
 public class EventsController {
     private EventsService service;
 
@@ -128,5 +130,15 @@ public class EventsController {
     public ResponseEntity<List<Event>> getEvents(@RequestParam Pagination pagination) {
         List<Event> result = service.getEvents(pagination.getPageNumber(), pagination.getPageSize());
         return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @PatchMapping(value = "/events/{id}/accessibility")
+    public ResponseEntity<Void> addAccessibiltyFeature(@PathVariable UUID id, @RequestParam List<AccessibiltyFeatureName> names) {
+        Event result = service.getEvent(id);
+        if (result == null)
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        result = service.addAccessibiltyFeature(result, names);
+        service.editEvent(result);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

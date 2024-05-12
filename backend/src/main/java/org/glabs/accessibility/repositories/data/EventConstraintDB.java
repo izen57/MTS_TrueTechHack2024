@@ -5,8 +5,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.ZonedDateTime;
-
 @Entity
 @Getter
 @Setter
@@ -21,9 +19,4 @@ public class EventConstraintDB {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "event_id")
     private EventDB event;
-
-    @NotNull
-    private ZonedDateTime beginZonedDateTime;
-    @NotNull
-    private ZonedDateTime endZonedDateTime;
 }
