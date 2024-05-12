@@ -1,5 +1,5 @@
 .header {
-	background-color: #ffffff;
+	background-color: #c9c9c9;
 	color: rgb(0, 0, 0);
 	display: flex;
 	box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
@@ -21,4 +21,12 @@
 	display: inline;
 	flex-direction: column;
 	padding: 10px;
+}
+
+.acc_ctrl {
+	display: flex;
+	justify-content: space-between;
+	position: absolute;
+	right: 20px;
+	top: 40px;
 }
