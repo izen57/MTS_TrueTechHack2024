@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-@Tag(name = "Events", description = "Операции над мероприятиями")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
+@Tag(name = "Events", description = "Операции с мероприятиями")
 public class EventsController {
     private EventsService service;
 
