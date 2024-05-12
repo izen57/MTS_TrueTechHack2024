@@ -16,7 +16,8 @@ public class RGBAContrast implements IContrastCheckable {
     private char alpha1;
     private char alpha2;
 
-    public RGBAContrast() {}
+    public RGBAContrast() {
+    }
 
     public RGBAContrast(RGBColor c1, RGBColor c2) {
         alpha1 = fullyOpaque;

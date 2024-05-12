@@ -48,8 +48,7 @@ public class UserPreferencesController {
         if (userOut == null) {
             status = HttpStatus.NOT_FOUND;
             headers.setLocation(URI.create("/"));
-        }
-        else {
+        } else {
             service.replaceColorsRGB(color1, color2);
             boolean naa = service.normalTextAAContrastCheck();
             boolean naaa = service.normalTextAAAContrastCheck();

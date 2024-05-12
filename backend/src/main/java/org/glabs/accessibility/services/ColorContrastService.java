@@ -5,22 +5,22 @@ import org.glabs.accessibility.domain.RGBAContrast;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.css.RGBColor;
 
-import java.awt.*;
-
 @Service
 public class ColorContrastService {
-    private IContrastCheckable rgbaColorsCheck;
     private final float normalAA = 4.5f;
     private final float largeAA = 3f;
     private final float normalAAA = 7f;
     private final float largeAAA = 4.5f;
+    private IContrastCheckable rgbaColorsCheck;
 
     public ColorContrastService() {
         rgbaColorsCheck = new RGBAContrast();
     }
+
     public ColorContrastService(RGBColor c1, RGBColor c2) {
         rgbaColorsCheck = new RGBAContrast(c1, c2);
     }
+
     public ColorContrastService(RGBColor c1, char a1, RGBColor c2, char a2) {
         rgbaColorsCheck = new RGBAContrast(c1, a1, c2, a2);
     }
