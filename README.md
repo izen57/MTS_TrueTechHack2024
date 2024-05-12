@@ -20,6 +20,9 @@
 # Диаграмма классов
 ![Диаграмма классов](/backend/backend.png)
 
+# Макет
+https://www.figma.com/file/25DiLZBUsh1Vkq9cl8OtO3/my_first_file?type=design&node-id=0%3A1&mode=design&t=0ufvmK948UXoE8Dc-1
+
 # Скриншоты
 ![Light mode](/static/Lk_main.png)
 ![Dark mode](/static/Lk_black.png)
