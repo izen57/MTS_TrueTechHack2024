@@ -17,6 +17,9 @@
 # Технологии
 [Java Spring](https://spring.io/), [React](https://react.dev/), [Docker](https://www.docker.com/).
 
+# Диаграмма классов
+![Диаграмма классов](/backend/backend.png)
+
 # Скриншоты
 ![Light mode](/static/Lk_main.png)
 ![Dark mode](/static/Lk_black.png)
