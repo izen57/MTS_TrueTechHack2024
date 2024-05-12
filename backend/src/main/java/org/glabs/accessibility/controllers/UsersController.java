@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.util.UUID;
 
-@Tag(name = "Users", description = "Операции над пользователями")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
+@Tag(name = "Users", description = "Операции с пользователями")
 public class UsersController {
     private final UsersService service;
 
